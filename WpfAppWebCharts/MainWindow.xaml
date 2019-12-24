@@ -9,6 +9,11 @@
         Loaded="OnLoadedPreserveOldAndAllowZoom"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#222">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
         <s:SciChartSurface x:Name="sciChartSurface">
             <s:SciChartSurface.RenderableSeries>
                 <s:FastLineRenderableSeries x:Name="LineSeries" Stroke="#FF4083B7"/>
@@ -18,9 +23,9 @@
                     </s:XyScatterRenderableSeries.PointMarker>
                 </s:XyScatterRenderableSeries>
             </s:SciChartSurface.RenderableSeries>
-            <s:SciChartSurface.XAxes>
+            <s:SciChartSurface.XAxis>
                 <s:NumericAxis x:Name="xAxesNumericAxis" AxisTitle="Number of Samples (per Series)"/>
-            </s:SciChartSurface.XAxes>
+            </s:SciChartSurface.XAxis>
             <s:SciChartSurface.YAxes>
                 <s:NumericAxis AxisTitle="Value" VisibleRange="-1.1, 1.1" GrowBy="0.1,0.1"/>
                 <s:NumericAxis Id="Axis2"
@@ -29,7 +34,7 @@
                    AxisAlignment="Left"/>
             </s:SciChartSurface.YAxes>
             <s:SciChartSurface.ChartModifier>
-                <s:ModifierGroup>
+                <s:ModifierGroup s:MouseManager.MouseEventGroup="MyMouseGroup">
                     <!-- Allow drag to zoom on Left mouse -->
                     <s:RubberBandXyZoomModifier ExecuteOn="MouseLeftButton"
                                                  RubberBandFill="#33FFFFFF" RubberBandStroke="#AAFFFFFF"
@@ -58,5 +63,35 @@
                 <s:TextAnnotation Text="Hello world!" X1="5.0" Y1="5.0"/>
             </s:SciChartSurface.Annotations>
         </s:SciChartSurface>
+        <!-- This is the second SciChartSurface we will add -->
+        <s:SciChartSurface x:Name="sciChartSurface1" Grid.Row="1">
+            <s:SciChartSurface.RenderableSeries>
+                <s:FastMountainRenderableSeries x:Name="mountainSeries" Stroke="LightSteelBlue" Fill="SteelBlue" Opacity="0.6"
+StrokeThickness="2"/>
+            </s:SciChartSurface.RenderableSeries>
+            <s:SciChartSurface.XAxis>
+                <s:NumericAxis AxisTitle="Number of Samples (per Series)"
+                               VisibleRange="{Binding ElementName=sciChartSurface, Path=XAxis.VisibleRange, Mode=TwoWay}"/>
+            </s:SciChartSurface.XAxis>
+            <s:SciChartSurface.YAxes>
+                <s:NumericAxis AxisTitle="Value" GrowBy="0.1,0.1" VisibleRange="-1.1, 1.1"/>
+                <s:NumericAxis Id="Axis2" AxisTitle="Secondary" GrowBy="0.1,0.1"
+                    VisibleRange="-2.0, 2.0" AxisAlignment="Left"/>
+            </s:SciChartSurface.YAxes>
+            <s:SciChartSurface.ChartModifier>
+                <s:ModifierGroup s:MouseManager.MouseEventGroup="MyMouseGroup">
+                    <s:RubberBandXyZoomModifier ExecuteOn="MouseLeftButton"
+                                            RubberBandFill="#33FFFFFF" RubberBandStroke="#AAFFFFFF"
+                                            RubberBandStrokeDashArray="2 2"/>
+                    <s:ZoomPanModifier ExecuteOn="MouseRightButton" ClipModeX="None" />
+                    <s:YAxisDragModifier DragMode="Scale"/>
+                    <s:XAxisDragModifier DragMode="Pan"/>
+                    <s:MouseWheelZoomModifier/>
+                    <s:ZoomExtentsModifier ExecuteOn="MouseDoubleClick" />
+                    <s:RolloverModifier ExecuteOn="MouseMove" ShowTooltipOn="Always"/>
+                </s:ModifierGroup>
+            </s:SciChartSurface.ChartModifier>
+        </s:SciChartSurface>
+        <s:SciChartScrollbar Grid.Row="2" Axis="{Binding ElementName=sciChartSurface, Path=XAxis}"/>
     </Grid>
 </Window>

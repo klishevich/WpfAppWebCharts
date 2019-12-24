@@ -30,7 +30,6 @@ namespace WpfAppWebCharts
             InitializeComponent();
             Console.WriteLine("Licensing info: " + SciChartSurface.VersionAndLicenseInfo);
             Console.WriteLine("Dump info: " + SciChartSurface.DumpInfo());
-            xAxesNumericAxis.Scrollbar = new SciChartScrollbar() { Height = 16 };
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
@@ -130,7 +129,7 @@ namespace WpfAppWebCharts
         private void OnLoadedPreserveOldAndAllowZoom(object sender, RoutedEventArgs routedEventArgs)
         {
             // Instantiate the ViewportManager here
-            double windowSize = ActualWidth;
+            double windowSize = 1000.0;
             sciChartSurface.ViewportManager = new ScrollingViewportManager(windowSize);
 
             // Create XyDataSeries to host data for our charts
@@ -140,6 +139,8 @@ namespace WpfAppWebCharts
             // Assign dataseries to RenderSeries
             LineSeries.DataSeries = lineData;
             ScatterSeries.DataSeries = scatterData;
+            mountainSeries.DataSeries = scatterData;
+
             int i = 0;
 
             // Start a timer to update our data
