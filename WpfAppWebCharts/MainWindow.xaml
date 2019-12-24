@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppWebCharts"
         mc:Ignorable="d"
-        Loaded="OnLoaded"
+        Loaded="OnLoadedPreserveOldAndAllowZoom"
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#222">
         <s:SciChartSurface x:Name="sciChartSurface">
@@ -22,7 +22,7 @@
                 <s:NumericAxis x:Name="xAxesNumericAxis" AxisTitle="Number of Samples (per Series)"/>
             </s:SciChartSurface.XAxes>
             <s:SciChartSurface.YAxes>
-                <s:NumericAxis AxisTitle="Value"/>
+                <s:NumericAxis AxisTitle="Value" VisibleRange="-1.1, 1.1" GrowBy="0.1,0.1"/>
             </s:SciChartSurface.YAxes>
             <s:SciChartSurface.ChartModifier>
                 <s:ModifierGroup>
