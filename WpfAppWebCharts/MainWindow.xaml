@@ -9,23 +9,6 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <s:SciChartSurface x:Name="sciChartSurface">
-            <s:SciChartSurface.XAxes>
-                <s:NumericAxis AxisTitle="Number of Samples (per Series)"/>
-            </s:SciChartSurface.XAxes>
-            <s:SciChartSurface.YAxes>
-                <s:NumericAxis AxisTitle="Value"/>
-            </s:SciChartSurface.YAxes>
-            <!--  Specify interactivity modifiers  -->
-            <s:SciChartSurface.ChartModifier>
-                <s:ModifierGroup>
-                    <s:RubberBandXyZoomModifier />
-                    <s:ZoomExtentsModifier />
-                </s:ModifierGroup>
-            </s:SciChartSurface.ChartModifier>
-            <!-- Add annotations hints to the user -->
-            <s:SciChartSurface.Annotations>
-                <s:TextAnnotation Text="Hello world!" X1="5.0" Y1="5.0"/>
-            </s:SciChartSurface.Annotations>
         </s:SciChartSurface>
     </Grid>
 </Window>
