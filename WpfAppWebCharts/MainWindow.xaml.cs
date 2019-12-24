@@ -36,6 +36,12 @@ namespace WpfAppWebCharts
             var scatterData = new XyDataSeries<double, double>();
             var lineData = new XyDataSeries<double, double>();
 
+            // NEW CODE HERE           
+            // Ensure that DataSeries are named for the legend
+            scatterData.SeriesName = "Cos(x)";
+            lineData.SeriesName = "Sin(x)";
+            // END NEW CODE
+
             for (int i = 0; i < 1000; i++)
             {
                 lineData.Append(i, Math.Sin(i * 0.1));
