@@ -153,6 +153,14 @@ namespace WpfAppWebCharts
                     // Append new data point
                     lineData.Append(i, Math.Sin(i * 0.1));
                     scatterData.Append(i, Math.Cos(i * 0.1));
+                    // Every 100th datapoint, add an annotation
+                    if (i % 100 == 0)
+                    {
+                        sciChartSurface.Annotations.Add(new InfoAnnotation() { X1 = i, Y1 = 0.0 });
+                        // It does not work, I don't know why?
+                        // Optional: Don't forget to remove annotations which are out of range!
+                        // sciChartSurface.Annotations.RemoveWhere(x => x.X1.ToDouble() < i - 1000);
+                    }
                     i++;
                 }
             };
