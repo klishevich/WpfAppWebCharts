@@ -12,7 +12,7 @@
         <s:SciChartSurface x:Name="sciChartSurface">
             <s:SciChartSurface.RenderableSeries>
                 <s:FastLineRenderableSeries x:Name="LineSeries" Stroke="#FF4083B7"/>
-                <s:XyScatterRenderableSeries x:Name="ScatterSeries" >
+                <s:XyScatterRenderableSeries x:Name="ScatterSeries" YAxisId="Axis2">
                     <s:XyScatterRenderableSeries.PointMarker>
                         <s:EllipsePointMarker Width="7" Height="7" Fill="#FFF" Stroke="SteelBlue"/>
                     </s:XyScatterRenderableSeries.PointMarker>
@@ -23,6 +23,10 @@
             </s:SciChartSurface.XAxes>
             <s:SciChartSurface.YAxes>
                 <s:NumericAxis AxisTitle="Value" VisibleRange="-1.1, 1.1" GrowBy="0.1,0.1"/>
+                <s:NumericAxis Id="Axis2"
+                   AxisTitle="Secondary" GrowBy="0.1,0.1"
+                   VisibleRange="-2.0, 2.0"
+                   AxisAlignment="Left"/>
             </s:SciChartSurface.YAxes>
             <s:SciChartSurface.ChartModifier>
                 <s:ModifierGroup>

@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SciChart.Charting.Visuals;
+using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Data.Model;
 
@@ -156,7 +157,12 @@ namespace WpfAppWebCharts
                     // Every 100th datapoint, add an annotation
                     if (i % 100 == 0)
                     {
-                        sciChartSurface.Annotations.Add(new InfoAnnotation() { X1 = i, Y1 = 0.0 });
+                        var isSecond = i % 200 == 0;
+                        sciChartSurface.Annotations.Add(new InfoAnnotation() {
+                            X1 = i,
+                            Y1 = isSecond ? Math.Cos(i * 0.1) : Math.Sin(i * 0.1),
+                            YAxisId = isSecond ? "Axis2" : AxisBase.DefaultAxisId
+                        });
                         // It does not work, I don't know why?
                         // Optional: Don't forget to remove annotations which are out of range!
                         // sciChartSurface.Annotations.RemoveWhere(x => x.X1.ToDouble() < i - 1000);
