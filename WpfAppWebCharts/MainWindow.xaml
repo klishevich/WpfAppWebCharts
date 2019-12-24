@@ -6,9 +6,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppWebCharts"
         mc:Ignorable="d"
+        Loaded="OnLoaded"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <s:SciChartSurface x:Name="sciChartSurface">
+            <s:SciChartSurface.RenderableSeries>
+                <s:FastLineRenderableSeries x:Name="LineSeries" Stroke="#FF4083B7"/>
+                <s:XyScatterRenderableSeries x:Name="ScatterSeries" >
+                    <s:XyScatterRenderableSeries.PointMarker>
+                        <s:EllipsePointMarker Width="7" Height="7" Fill="#FFF" Stroke="SteelBlue"/>
+                    </s:XyScatterRenderableSeries.PointMarker>
+                </s:XyScatterRenderableSeries>
+            </s:SciChartSurface.RenderableSeries>
             <s:SciChartSurface.XAxes>
                 <s:NumericAxis AxisTitle="Number of Samples (per Series)"/>
             </s:SciChartSurface.XAxes>
