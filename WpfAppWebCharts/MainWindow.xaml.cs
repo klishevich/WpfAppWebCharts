@@ -27,6 +27,7 @@ namespace WpfAppWebCharts
             InitializeComponent();
             Console.WriteLine("Licensing info: " + SciChartSurface.VersionAndLicenseInfo);
             Console.WriteLine("Dump info: " + SciChartSurface.DumpInfo());
+            xAxesNumericAxis.Scrollbar = new SciChartScrollbar() { Height = 16 };
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
