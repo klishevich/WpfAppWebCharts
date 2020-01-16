@@ -10,49 +10,14 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid Background="#222">
         <s:SciChartSurface x:Name="sciChartSurface">
-            <s:SciChartSurface.RenderableSeries>
-                <s:FastLineRenderableSeries x:Name="LineSeries" Stroke="#FF4083B7"/>
-                <s:XyScatterRenderableSeries x:Name="ScatterSeries" >
-                    <s:XyScatterRenderableSeries.PointMarker>
-                        <s:EllipsePointMarker Width="7" Height="7" Fill="#FFF" Stroke="SteelBlue"/>
-                    </s:XyScatterRenderableSeries.PointMarker>
-                </s:XyScatterRenderableSeries>
-            </s:SciChartSurface.RenderableSeries>
-            <s:SciChartSurface.XAxes>
-                <s:NumericAxis x:Name="xAxesNumericAxis" AxisTitle="Number of Samples (per Series)"/>
-            </s:SciChartSurface.XAxes>
-            <s:SciChartSurface.YAxes>
-                <s:NumericAxis AxisTitle="Value"/>
-            </s:SciChartSurface.YAxes>
             <s:SciChartSurface.ChartModifier>
-                <s:ModifierGroup>
+                <s:ModifierGroup x:Name="modifierGroup">
                     <!-- Allow drag to zoom on Left mouse -->
-                    <s:RubberBandXyZoomModifier ExecuteOn="MouseLeftButton"
-                                                 RubberBandFill="#33FFFFFF" RubberBandStroke="#AAFFFFFF"
-                                                 RubberBandStrokeDashArray="2 2"/>
-                    <!-- Allow pan on Right mouse drag -->
-                    <s:ZoomPanModifier ExecuteOn="MouseRightButton" ClipModeX="None" />
-                    <!-- Allow Dragging YAxis to Scale -->
-                    <s:YAxisDragModifier DragMode="Scale"/>
-                    <!-- Allow Dragging XAxis to Pan -->
-                    <s:XAxisDragModifier DragMode="Pan"/>
-                    <!-- Allow Mousewheel Zoom -->
-                    <s:MouseWheelZoomModifier/>
+                    <s:RubberBandXyZoomModifier ExecuteOn="MouseLeftButton" RubberBandFill="#33FFFFFF"/>
                     <!-- Allow Zoom to Extents on double click -->
                     <s:ZoomExtentsModifier ExecuteOn="MouseDoubleClick" />
-                    <!-- Add a Legend to the chart -->
-                    <s:LegendModifier ShowLegend="True" Orientation="Horizontal"
-                                       VerticalAlignment="Bottom"                                     
-                                       HorizontalAlignment="Center"
-                                       LegendPlacement="Inside" />
-                    <!-- Add a RolloverModifier to the chart (shows vertical line tooltips -->
-                    <s:RolloverModifier ExecuteOn="MouseMove" ShowTooltipOn="MouseHover"/>
                 </s:ModifierGroup>
             </s:SciChartSurface.ChartModifier>
-            <!-- Add annotations hints to the user -->
-            <s:SciChartSurface.Annotations>
-                <s:TextAnnotation Text="Hello world!" X1="5.0" Y1="5.0"/>
-            </s:SciChartSurface.Annotations>
         </s:SciChartSurface>
     </Grid>
 </Window>

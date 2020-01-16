@@ -13,7 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SciChart.Charting.Visuals;
+using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Model.DataSeries;
+using SciChart.Charting.Visuals.RenderableSeries;
+using SciChart.Charting.ChartModifiers;
 
 namespace WpfAppWebCharts
 {
@@ -22,12 +25,35 @@ namespace WpfAppWebCharts
     /// </summary>
     public partial class MainWindow : Window
     {
+        private FastLineRenderableSeries LineSeries;
         public MainWindow()
         {
             InitializeComponent();
             Console.WriteLine("Licensing info: " + SciChartSurface.VersionAndLicenseInfo);
             Console.WriteLine("Dump info: " + SciChartSurface.DumpInfo());
+
+
+            LineSeries = new FastLineRenderableSeries()
+            {
+                Stroke = (Color)ColorConverter.ConvertFromString("#FF4083B7")
+            };
+            sciChartSurface.RenderableSeries.Add(LineSeries);
+
+            // Create the X and Y Axis
+            var xAxesNumericAxis = new NumericAxis() { AxisTitle = "Number of Samples (per Series)" };
             xAxesNumericAxis.Scrollbar = new SciChartScrollbar() { Height = 16 };
+            var yAxesNumericAxis = new NumericAxis() { AxisTitle = "Value" };
+            sciChartSurface.XAxes.Add(xAxesNumericAxis);
+            sciChartSurface.YAxes.Add(yAxesNumericAxis);
+
+            // interactivity modifiers
+            //var rubberBandXyZoomModifier = new RubberBandXyZoomModifier()
+            //{
+            //    ExecuteOn = ExecuteOn.MouseLeftButton,
+            //    RubberBandFill = new BrushConverter().ConvertFromString("#33FFFFFF") as SolidColorBrush
+            //};
+            //var zoomExtentsModifier = new ZoomExtentsModifier() { ExecuteOn = ExecuteOn.MouseDoubleClick };
+            //sciChartSurface.ChartModifier = modifierGroup;
         }
 
         private void OnLoaded(object sender, RoutedEventArgs routedEventArgs)
@@ -49,7 +75,6 @@ namespace WpfAppWebCharts
             }
             // Assign dataseries to RenderSeries
             LineSeries.DataSeries = lineData;
-            ScatterSeries.DataSeries = scatterData;
         }
     }
 }
