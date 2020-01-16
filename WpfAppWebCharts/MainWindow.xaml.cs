@@ -17,6 +17,8 @@ using SciChart.Charting.Visuals;
 using SciChart.Charting.Visuals.Axes;
 using SciChart.Charting.Model.DataSeries;
 using SciChart.Data.Model;
+using SciChart.Core.Extensions;
+
 
 namespace WpfAppWebCharts
 {
@@ -166,7 +168,7 @@ namespace WpfAppWebCharts
                         });
                         // It does not work, I don't know why?
                         // Optional: Don't forget to remove annotations which are out of range!
-                        // sciChartSurface.Annotations.RemoveWhere(x => x.X1.ToDouble() < i - 1000);
+                        sciChartSurface.Annotations.RemoveWhere(x => x.X1.ToDouble() < i - 1000);
                     }
                     i++;
                 }
