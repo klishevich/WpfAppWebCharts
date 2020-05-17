@@ -39,12 +39,13 @@ namespace WpfAppWebCharts
             };
             sciChartSurface.RenderableSeries.Add(LineSeries);
 
-            // Create the X and Y Axis
+            // Create the X
             var xAxesNumericAxis = new NumericAxis() { AxisTitle = "Number of Samples (per Series)" };
             xAxesNumericAxis.Scrollbar = new SciChartScrollbar() { Height = 16 };
-            var yAxesNumericAxis = new NumericAxis() { AxisTitle = "Value" };
             sciChartSurface.XAxes.Add(xAxesNumericAxis);
-            sciChartSurface.YAxes.Add(yAxesNumericAxis);
+            // and Y Axis
+            //var yAxesNumericAxis = new NumericAxis() { AxisTitle = "Value" };
+            //sciChartSurface.YAxes.Add(yAxesNumericAxis);
 
             // interactivity modifiers
             //var rubberBandXyZoomModifier = new RubberBandXyZoomModifier()

@@ -20,6 +20,9 @@
                     <s:RolloverModifier ExecuteOn="MouseMove" ShowTooltipOn="MouseHover"/>
                 </s:ModifierGroup>
             </s:SciChartSurface.ChartModifier>
+            <s:SciChartSurface.YAxes>
+                <s:NumericAxis AxisTitle="Value" VisibleRange="-2, 2"/>
+            </s:SciChartSurface.YAxes>
         </s:SciChartSurface>
     </Grid>
 </Window>
