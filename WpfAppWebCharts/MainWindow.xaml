@@ -6,26 +6,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfAppWebCharts"
         mc:Ignorable="d"
+        Loaded="OnLoaded"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <s:SciChartSurface x:Name="sciChartSurface">
-            <s:SciChartSurface.XAxes>
-                <s:NumericAxis AxisTitle="Number of Samples (per Series)"/>
-            </s:SciChartSurface.XAxes>
-            <s:SciChartSurface.YAxes>
-                <s:NumericAxis AxisTitle="Value"/>
-            </s:SciChartSurface.YAxes>
-            <!--  Specify interactivity modifiers  -->
+            <s:SciChartSurface.RenderableSeries>
+                <s:FastUniformHeatmapRenderableSeries x:Name="heatmapSeries" Opacity="0.9">
+                    <s:FastUniformHeatmapRenderableSeries.ColorMap>
+                        <s:HeatmapColorPalette Maximum="12">
+                            <s:HeatmapColorPalette.GradientStops>
+                                <GradientStop Offset="0" Color="Yellow" />
+                                <GradientStop Offset="1" Color="Red" />
+                            </s:HeatmapColorPalette.GradientStops>
+                        </s:HeatmapColorPalette>
+                    </s:FastUniformHeatmapRenderableSeries.ColorMap>
+                </s:FastUniformHeatmapRenderableSeries>
+            </s:SciChartSurface.RenderableSeries>
+            <s:SciChartSurface.XAxis>
+                <s:NumericAxis DrawMajorBands="True" GrowBy="0.1, 0.1" />
+            </s:SciChartSurface.XAxis>
+            <s:SciChartSurface.YAxis>
+                <s:NumericAxis DrawMajorBands="True" GrowBy="0.1, 0.1" />
+            </s:SciChartSurface.YAxis>
             <s:SciChartSurface.ChartModifier>
                 <s:ModifierGroup>
-                    <s:RubberBandXyZoomModifier />
-                    <s:ZoomExtentsModifier />
+                    <s:RolloverModifier IsEnabled="True" DrawVerticalLine="True"
+                             ShowTooltipOn="Always" SourceMode="AllSeries"/>
                 </s:ModifierGroup>
             </s:SciChartSurface.ChartModifier>
-            <!-- Add annotations hints to the user -->
-            <s:SciChartSurface.Annotations>
-                <s:TextAnnotation Text="Hello world!" X1="5.0" Y1="5.0"/>
-            </s:SciChartSurface.Annotations>
         </s:SciChartSurface>
     </Grid>
 </Window>
